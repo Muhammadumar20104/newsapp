@@ -1,14 +1,13 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <>
-      <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div class="container-fluid">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div className="container-fluid">
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarTogglerDemo01"
@@ -16,69 +15,102 @@ export default function Navbar() {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-              <Link class="navbar-brand" to="#">
+            <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+              <Link className="navbar-brand" to="#">
                 NewsMonkey
               </Link>
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <Link class="nav-link " aria-current="page" to="/">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <Link className="nav-link " aria-current="page" to="/">
                     Home
                   </Link>
                 </li>
-                {/* <li class="nav-item">
-                  <Link class="nav-link" to="/about">
+                {/* <li className="nav-item">
+                  <Link className="nav-link" to="/about">
                     About
                   </Link>
                 </li> */}
-                <li class="nav-item">
-                  <Link class="nav-link" to="/business">
-                  Business
+                <li className="nav-item">
+                  <Link className="nav-link" to="/business">
+                    Business
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/entertainment">
-                  Entertainment
+                <li className="nav-item">
+                  <Link className="nav-link" to="/entertainment">
+                    Entertainment
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/health">
-                  Health
+                <li className="nav-item">
+                  <Link className="nav-link" to="/health">
+                    Health
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/science">
-                  Science
+                <li className="nav-item">
+                  <Link className="nav-link" to="/science">
+                    Science
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/sport">
-                  Sports
+                <li className="nav-item">
+                  <Link className="nav-link" to="/sport">
+                    Sports
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/technology">
-                  Technology
+                <li className="nav-item">
+                  <Link className="nav-link" to="/technology">
+                    Technology
                   </Link>
                 </li>
               </ul>
-              {/* <form class="d-flex" role="search">
+              {/* <div className="btn-group mx-5 my-1">
+                <button
+                  type="button"
+                  className="btn btn-secondary dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  data-bs-display="static"
+                  aria-expanded="false"
+                  
+                >
+                  Country
+                </button>
+                <ul className="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                  <li>
+                    <Link className="dropdown-item" to="/in/">
+                      India
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/cn/">
+                      China
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/">
+                     United State
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/mx/">
+                     Mexico
+                    </Link>
+                  </li>
+                </ul>
+              </div> */}
+              {/* <form className="d-flex" role="search">
                 <input
-                  class="form-control me-2"
+                  className="form-control me-2"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
                 />
-                <button class="btn btn-outline-success" type="submit">
+                <button className="btn btn-outline-success" type="submit">
                   Search
                 </button>
               </form> */}
             </div>
           </div>
         </nav>
-      </div>
     </>
   );
 }

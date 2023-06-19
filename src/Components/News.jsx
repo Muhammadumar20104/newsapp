@@ -4,12 +4,27 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Spinner from "./Spinner";
 
-
 export default function News(props) {
   const [Article, setArticle] = useState([]);
   const [page, setPage] = useState(1);
   const [result, setResult] = useState([]);
   const [Loading, setLoading] = useState(false);
+  // const updateNews = async () => {
+  // fetchData();
+  //   try {
+  //     setLoading(true);
+  //     const response = await fetch(
+  //       `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=13a2b20f70ce4b99bc276d0f5597c609&page=${page}&pageSize=${props.pageSize}`
+  //     );
+
+  //     const jsonData = await response.json();
+  //     setLoading(false);
+  //     setResult(jsonData.totalResults);
+  //     setArticle(jsonData.articles);
+  //   } catch (error) {
+  //     console.log("Error fetching data:", error);
+  //   }
+  // };
 
   useEffect(() => {
     fetchData();
@@ -19,16 +34,20 @@ export default function News(props) {
     try {
       setLoading(true);
       const response = await fetch(
-        `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=13a2b20f70ce4b99bc276d0f5597c609&pageSize=${props.pageSize}`
+        `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=0d0a5b92b7124a909edbed213a3f4125&page=${page}&pageSize=${props.pageSize}`
       );
 
       const jsonData = await response.json();
+      console.log(jsonData);
       setLoading(false);
       setResult(jsonData.totalResults);
       setArticle(jsonData.articles);
     } catch (error) {
       console.log("Error fetching data:", error);
     }
+    document.title = `${
+      props.category.charAt(0).toUpperCase() + props.category.slice(1)
+    } NewsMonkey`;
   };
   const handlePrev = async () => {
     try {
@@ -38,7 +57,7 @@ export default function News(props) {
           props.country
         }&category=${
           props.category
-        }&apiKey=13a2b20f70ce4b99bc276d0f5597c609&page=${page - 1}&pageSize=${
+        }&apiKey=0d0a5b92b7124a909edbed213a3f4125&page=${page - 1}&pageSize=${
           props.pageSize
         }`
       );
@@ -61,11 +80,10 @@ export default function News(props) {
             props.country
           }&category=${
             props.category
-          }&apiKey=13a2b20f70ce4b99bc276d0f5597c609&page=${page + 1}&pageSize=${
+          }&apiKey=0d0a5b92b7124a909edbed213a3f4125&page=${page + 1}&pageSize=${
             props.pageSize
           }`
         );
-
         const jsonData = await response.json();
         setLoading(false);
         console.log(jsonData.articles);
@@ -74,12 +92,17 @@ export default function News(props) {
       } catch (error) {
         console.log("Error fetching data:", error);
       }
-      setPage(page + 1);
     }
+    setPage(page + 1);
   };
+
   return (
     <div className="container my-3 ">
-      <h2 className="text-center">News Monkey -TopHeadLines</h2>
+      <h2 className="text-center">
+        News Monkey -
+        {props.category.charAt(0).toUpperCase() + props.category.slice(1)}{" "}
+        HeadLines
+      </h2>
       {Loading && (
         <div className="position-absolute top-50 start-50">
           <Spinner />
@@ -94,6 +117,9 @@ export default function News(props) {
                 description={element.description}
                 imgUrl={element.urlToImage}
                 newUrl={element.url}
+                author={element.author}
+                date={element.publishedAt}
+                source={element.source.name}
               />
             </div>
           );
